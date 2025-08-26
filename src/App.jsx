@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import useCustomMemo from './hooks/use-memo-hook'
 import './App.css'
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
     return counter1 * counter1;
   }
 
-  const memoizedValue = useMemo(squaredValue , [counter1]);
+  const memoizedValue = useCustomMemo(squaredValue , [counter1]);
 
   return (
     <div className='App'>
