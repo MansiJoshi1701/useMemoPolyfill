@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 
 const useCustomMemo = (callback , deps) => {
 
@@ -28,7 +28,13 @@ const useCustomMemo = (callback , deps) => {
         }
     }
     //cleanup logic
+    useEffect(() => {
+        return () => {
+            memoizedRef.current = null;
+        }
+    } , [])
 
+    
     //return memoized value
     return memoizedRef.current.value;
 }
